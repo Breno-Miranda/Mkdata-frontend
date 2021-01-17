@@ -7,6 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { SiteComponent } from './layouts/site/site.component';
 import { AppRoutingModule } from './app-routing.module';
 
 
@@ -18,6 +19,7 @@ import { ErrorInterceptor } from './core/http/error.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
+    SiteComponent
   ],
   imports: [
     BrowserModule,

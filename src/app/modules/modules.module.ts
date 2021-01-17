@@ -11,7 +11,9 @@ import { ClientsComponent } from './clients/clients.component';
 
 
 @NgModule({
-  declarations: [SiteComponent, ClientsComponent],
+  declarations: [
+    SiteComponent, 
+    ClientsComponent],
   imports: [
     CommonModule,
     SharedModule,

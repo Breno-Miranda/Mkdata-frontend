@@ -8,7 +8,6 @@ import { ModulesModule } from 'src/app/modules/modules.module';
 
 import { SiteRoutes } from './site.routing.module';
 
-
 @NgModule({
   declarations: [],
   imports: [
