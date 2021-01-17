@@ -1,10 +1,12 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from './common/site/header/header.component';
+import { FooterComponent } from './common/site/footer/footer.component';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [HeaderComponent, FooterComponent],
   imports: [
     CommonModule
   ],
