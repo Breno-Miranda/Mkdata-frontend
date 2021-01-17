@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { ModulesModule } from 'src/app/modules/modules.module';
-import { SiteRoutes } from './site.routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { ModulesModule } from 'src/app/modules/modules.module';
+
+import { SiteRoutes } from './site.routing.module';
 
 
 @NgModule({
@@ -12,7 +14,7 @@ import { SiteRoutes } from './site.routing.module';
   imports: [
     CommonModule,
     RouterModule.forChild(SiteRoutes),
-    NgModule,
+    NgbModule,
     ModulesModule,
     FormsModule,
   ]
