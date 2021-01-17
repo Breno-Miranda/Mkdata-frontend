@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './common/site/header/header.component';
 import { FooterComponent } from './common/site/footer/footer.component';
+import { ClientsComponent } from './module/clients/clients.component';
 
 
 
@@ -13,10 +14,12 @@ import { FooterComponent } from './common/site/footer/footer.component';
     HeaderComponent,
     FooterComponent,
     CommonModule,
+    ClientsComponent
   ],
   declarations: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ClientsComponent
   ],
   imports: [
     CommonModule,
