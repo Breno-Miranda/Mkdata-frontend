@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SiteComponent } from './site/site.component';
 
 
 
 @NgModule({
-  declarations: [SiteComponent],
+  declarations: [],
   imports: [
     CommonModule
   ]
 })
-export class LayoutsModule { }
+export class SiteModule { }
