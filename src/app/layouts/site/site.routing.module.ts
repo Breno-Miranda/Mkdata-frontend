@@ -14,7 +14,7 @@ export const SiteRoutes: Routes = [
   {path: 'clientes', component: ClientsComponent},
   {path: 'clientes/adicionar', component: AddEditComponent},
   {path: 'clientes/editar/:id', component: AddEditComponent},
-  {path: 'clientes/editar/:id', component: DelComponent},
+  {path: 'clientes/excluir/:id', component: DelComponent},
 ];
 
 
