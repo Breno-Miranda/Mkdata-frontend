@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "Mkdata-frontend"
+  "defaultProject": "Mkdata-frontend",
+  "cli": {
+    "analytics": "98aa00eb-74ec-479b-ab13-d340c4b61675"
+  }
 }
