@@ -14,7 +14,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { JwtInterceptor } from './core/authentication/jwt.interceptor';
 import { ErrorInterceptor } from './core/http/error.interceptor';
 
-
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+ 
+const maskConfig: Partial<IConfig> = {
+  validation: false,
+};
+ 
 
 @NgModule({
   declarations: [
@@ -28,6 +33,7 @@ import { ErrorInterceptor } from './core/http/error.interceptor';
     NgbModule,
     RouterModule,
     SharedModule,
+    NgxMaskModule.forRoot(maskConfig),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

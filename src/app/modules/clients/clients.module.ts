@@ -11,7 +11,11 @@ import { AddEditComponent } from './add-edit/add-edit.component';
 import { DelComponent } from './del/del.component';
 
 
-
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+ 
+const maskConfig: Partial<IConfig> = {
+  validation: true,
+};
 
 @NgModule({
   declarations: [
@@ -23,7 +27,8 @@ import { DelComponent } from './del/del.component';
     SharedModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot(maskConfig),
   ]
 })
 

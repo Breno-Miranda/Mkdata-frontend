@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
+import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms'
 
 
 @Component({
@@ -11,7 +11,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 
 export class AddEditComponent implements OnInit {
 
-  contatcs: any = [];
+  contatcs: any = FormArray;
 
   formClient!: FormGroup;
 
@@ -26,25 +26,36 @@ export class AddEditComponent implements OnInit {
   ngOnInit(): void {
 
     this.formClient = this.formBuilder.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required , Validators.pattern('^[a-zA-Z]+ [a-zA-Z]+$')]],
       type: ['', Validators.required],
+      cpfcnpj: ['', Validators.required],
+      rgie: ['', Validators.required],
+      isactive: ['' ,  Validators.nullValidator],
+      phones: this.formBuilder.array([
+        this.formBuilder.group({
+          ismain: [false,  Validators.nullValidator],
+          areacode: ['', Validators.required],
+          phone: ['', Validators.required],
+        }),
+      ]),
     });
 
+    this.contatcs = this.formClient.get('phones') as FormArray;
   }
 
-    // convenience getter for easy access to form fields
-    get f() {
-      return this.formClient.controls;
-    }
+   get f() {
+    return this.formClient.controls;
+  }
 
   addContact(){
-    this.contatcs.push({
-      'ismain':0,
-      'areacode': '',
-      'phone': '',
+
+    let formGroup:FormGroup = this.formBuilder.group({
+      ismain: [false,  Validators.nullValidator],
+      areacode: ['', Validators.required],
+      phone: ['', Validators.required],
     });
 
-    console.log(this.contatcs);
+    this.contatcs.push(formGroup);
   }
 
   onSubmit(){

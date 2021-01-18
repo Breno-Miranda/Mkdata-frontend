@@ -8,6 +8,12 @@ import { ModulesModule } from 'src/app/modules/modules.module';
 
 import { SiteRoutes } from './site.routing.module';
 
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+ 
+const maskConfig: Partial<IConfig> = {
+  validation: true,
+};
+
 @NgModule({
   declarations: [],
   imports: [
@@ -16,6 +22,7 @@ import { SiteRoutes } from './site.routing.module';
     NgbModule,
     ModulesModule,
     FormsModule,
+    NgxMaskModule.forRoot(maskConfig),
   ]
 })
 export class SiteModule { }
