@@ -4,12 +4,13 @@
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique pariatur, vitae officia dignissimos
             distinctio sequi omnis, dolorum, expedita at officiis suscipit harum. Pariatur suscipit maxime doloremque
             possimus beatae ratione odio!</p>
-        <a href="#" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"
+        <a href="#" class="btn btn-secondary btn-lg active float-right" role="button" aria-pressed="true"
             [routerLink]="['/clientes/adicionar']">Adicionar novo</a>
     </div>
 </div>
 <div class="row mr-auto mt-4">
     <div class="col">
-        <app-shared-clients></app-shared-clients>
+        
+        <app-clients-table [data]="clients"></app-clients-table>
     </div>
 </div>

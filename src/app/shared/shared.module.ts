@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 
 import { HeaderComponent } from './common/site/header/header.component';
 import { FooterComponent } from './common/site/footer/footer.component';
-import { ClientsComponent } from './module/clients/clients.component';
+import { ClientsTableComponent } from './module/clients-table/clients-table.component';
 
 
 
@@ -14,12 +14,12 @@ import { ClientsComponent } from './module/clients/clients.component';
     HeaderComponent,
     FooterComponent,
     CommonModule,
-    ClientsComponent
+    ClientsTableComponent
   ],
   declarations: [
     HeaderComponent,
     FooterComponent,
-    ClientsComponent
+    ClientsTableComponent
   ],
   imports: [
     CommonModule,

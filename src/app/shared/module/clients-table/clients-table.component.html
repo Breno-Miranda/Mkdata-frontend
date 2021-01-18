@@ -1,0 +1,21 @@
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nome completo</th>
+            <th scope="col">CPF/CNPJ</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody> 
+        <tr *ngFor="let item of data; let i = index" >
+            <th scope="row">{{i + 1}}</th>
+            <td>{{item.name}}</td>
+            <td>{{item.cpfcnpj}}</td>
+            <td>
+                <button>editar</button>
+                <button>excluir</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
