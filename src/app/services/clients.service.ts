@@ -17,7 +17,7 @@ export class ClientsService {
   }
 
   create( data: any ) {
-    return this.http.post<clientsModel[]>(`${environment.apiUrl}/users`, data);
+    return this.http.post<any[]>(`${environment.apiUrl}/users`, data);
   }
 }
 

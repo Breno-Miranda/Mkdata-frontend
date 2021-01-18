@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms'
+import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { ClientsService } from 'src/app/services/clients.service';
 
@@ -22,7 +23,8 @@ export class AddEditComponent implements OnInit {
   constructor(
 
     private formBuilder: FormBuilder,
-    private clientsService: ClientsService
+    private clientsService: ClientsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -61,17 +63,12 @@ export class AddEditComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formClient.value);
-    console.log(this.contatcs);
-    this.clientsService.create(this.formClient.value)
-      .pipe(first())
-      .subscribe(
-        data => {
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
+    this.clientsService.create(this.formClient.value).pipe(first()).subscribe(data => {
+      alert("cadastrado com sucesso.");
+      this.router.navigate(['/clientes']);
+    }, error => {
+      console.log(error);
+    });
   }
 
 }

@@ -10,6 +10,14 @@ import { ClientsModule } from './clients/clients.module';
 
 
 
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+ 
+const maskConfig: Partial<IConfig> = {
+  validation: true,
+};
+
+
+
 @NgModule({
   declarations: [
     SiteComponent, 
@@ -18,7 +26,8 @@ import { ClientsModule } from './clients/clients.module';
     CommonModule,
     SharedModule,
     RouterModule,
-    ClientsModule
+    ClientsModule,
+    NgxMaskModule.forRoot(maskConfig),
   ]
 })
 export class ModulesModule { }

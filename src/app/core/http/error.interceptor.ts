@@ -18,10 +18,10 @@ export class ErrorInterceptor implements HttpInterceptor {
       } 
       
       if(err.status === 403){
-        this.router.navigate(['/dashboard/error-403']);
+        this.router.navigate(['/']);
       }
-      const error = err.error || err.statusText;
-      return throwError(error);
+      // const error = err.error || err.statusText;
+      return throwError(err);
     }));
   }
 }
