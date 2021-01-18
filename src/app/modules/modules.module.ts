@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
 
 import { SiteComponent } from './site/site.component';
 import { SharedModule } from '../shared/shared.module';
-import { ClientsComponent } from './clients/clients.component';
 import { ClientsModule } from './clients/clients.module';
 
 

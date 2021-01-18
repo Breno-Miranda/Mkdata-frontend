@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms'
+import { first } from 'rxjs/operators';
+import { ClientsService } from 'src/app/services/clients.service';
 
 
 @Component({
@@ -20,20 +22,20 @@ export class AddEditComponent implements OnInit {
   constructor(
 
     private formBuilder: FormBuilder,
-    
+    private clientsService: ClientsService
   ) { }
 
   ngOnInit(): void {
 
     this.formClient = this.formBuilder.group({
-      name: ['', [Validators.required , Validators.pattern('^[a-zA-Z]+ [a-zA-Z]+$')]],
+      name: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+ [a-zA-Z]+$')]],
       type: ['', Validators.required],
       cpfcnpj: ['', Validators.required],
       rgie: ['', Validators.required],
-      isactive: ['' ,  Validators.nullValidator],
+      isactive: ['', Validators.nullValidator],
       phones: this.formBuilder.array([
         this.formBuilder.group({
-          ismain: [false,  Validators.nullValidator],
+          ismain: [false, Validators.nullValidator],
           areacode: ['', Validators.required],
           phone: ['', Validators.required],
         }),
@@ -43,14 +45,14 @@ export class AddEditComponent implements OnInit {
     this.contatcs = this.formClient.get('phones') as FormArray;
   }
 
-   get f() {
+  get f() {
     return this.formClient.controls;
   }
 
-  addContact(){
+  addContact() {
 
-    let formGroup:FormGroup = this.formBuilder.group({
-      ismain: [false,  Validators.nullValidator],
+    let formGroup: FormGroup = this.formBuilder.group({
+      ismain: [false, Validators.nullValidator],
       areacode: ['', Validators.required],
       phone: ['', Validators.required],
     });
@@ -58,9 +60,18 @@ export class AddEditComponent implements OnInit {
     this.contatcs.push(formGroup);
   }
 
-  onSubmit(){
-    console.warn(this.formClient.value);
+  onSubmit() {
+    console.log(this.formClient.value);
     console.log(this.contatcs);
+    this.clientsService.create(this.formClient.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          console.log(data);
+        },
+        error => {
+          console.log(error);
+        });
   }
 
 }

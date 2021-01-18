@@ -1,7 +1,10 @@
 export class clientsModel {
-    id!: number;
-    email!: string;
-    role!: string;
-    token!: string;
-  }
-  
+  id!: number;
+  name!: string;
+  cpfcnpj!: string;
+  type!: string;
+  rgie!: string;
+  isactive!: boolean;
+  created_at!: string;
+  phones!: [];
+}

@@ -4,6 +4,7 @@
             <th scope="col">#</th>
             <th scope="col">Nome completo</th>
             <th scope="col">CPF/CNPJ</th>
+            <th scope="col">RG/IE</th>
             <th scope="col">Ações</th>
         </tr>
     </thead>
@@ -12,9 +13,11 @@
             <th scope="row">{{i + 1}}</th>
             <td>{{item.name}}</td>
             <td>{{item.cpfcnpj}}</td>
+            <td>{{item.rgie}}</td>
             <td>
-                <button>editar</button>
-                <button>excluir</button>
+                <button class="btn btn-secondary">visualizar</button> | 
+                <button class="btn btn-secondary">editar</button> | 
+                <button class="btn btn-secondary">excluir</button>
             </td>
         </tr>
     </tbody>

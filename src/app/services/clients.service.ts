@@ -15,5 +15,9 @@ export class ClientsService {
   getAll() {
     return this.http.get<clientsModel[]>(`${environment.apiUrl}/users`);
   }
+
+  create( data: any ) {
+    return this.http.post<clientsModel[]>(`${environment.apiUrl}/users`, data);
+  }
 }
 

@@ -8,7 +8,6 @@ import { ClientsComponent } from './clients.component';
 
 import { SharedModule } from 'src/app/shared/shared.module';
 import { AddEditComponent } from './add-edit/add-edit.component';
-import { DelComponent } from './del/del.component';
 
 
 import { NgxMaskModule, IConfig } from 'ngx-mask'
@@ -21,7 +20,7 @@ const maskConfig: Partial<IConfig> = {
   declarations: [
     ClientsComponent,
     AddEditComponent,
-    DelComponent],
+  ],
   imports: [
     CommonModule,
     SharedModule,
