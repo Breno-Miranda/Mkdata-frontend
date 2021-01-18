@@ -13,7 +13,7 @@ export class ClientsService {
   ) { }
   
   getAll() {
-    return this.http.get<clientsModel[]>(`${environment.apiUrl}/users/`);
+    return this.http.get<clientsModel[]>(`${environment.apiUrl}/users`);
   }
 }
 
