@@ -16,8 +16,14 @@ export class ClientsService {
     return this.http.get<clientsModel[]>(`${environment.apiUrl}/users`);
   }
 
-  create( data: any ) {
-    return this.http.post<any[]>(`${environment.apiUrl}/users`, data);
+  getFilterPeriod( request: any ) {
+    return this.http.get<clientsModel[]>(`${environment.apiUrl}/users/filter/period`, {
+      params: request
+    });
+  }
+
+  create( request: any ) {
+    return this.http.post<any[]>(`${environment.apiUrl}/users`, request);
   }
 }
 

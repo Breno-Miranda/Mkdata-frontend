@@ -10,16 +10,25 @@ import { ClientsService } from 'src/app/services/clients.service';
 })
 export class SiteComponent implements OnInit {
 
-  clients: any;
+  clientsRecents: any;
+  clientsOld: any;
 
   constructor(
     private clientsService: ClientsService
   ) { }
 
   async ngOnInit(): Promise<void> {
-    await this.clientsService.getAll().subscribe( data => {
-      this.clients = data
+
+    // recents customers
+    await this.clientsService.getFilterPeriod({start: new Date(), end: new Date(), limit: 5}).subscribe( data => {
+      this.clientsRecents = data
     });
+
+    // old customers
+    await this.clientsService.getFilterPeriod({start:'2021-01-01', end: new Date(), limit: 5}).subscribe( data => {
+      this.clientsOld = data
+    });
+
   }
 
 }
