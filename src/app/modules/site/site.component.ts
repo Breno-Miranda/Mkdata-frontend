@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+
+import { ClientsService } from 'src/app/services/clients.service';
+
 @Component({
   selector: 'app-site',
   templateUrl: './site.component.html',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SiteComponent implements OnInit {
 
-  constructor() { }
+  clients: any;
 
-  ngOnInit(): void {
+  constructor(
+    private clientsService: ClientsService
+  ) { }
+
+  async ngOnInit(): Promise<void> {
+    await this.clientsService.getAll().subscribe( data => {
+      this.clients = data
+    });
   }
 
 }

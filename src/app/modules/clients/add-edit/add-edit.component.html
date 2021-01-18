@@ -1,12 +1,13 @@
 <div class="row">
     <div class="col-md-12 ">
         <h4 class="mb-3"></h4>
-        <form [formGroup]="formClient"  (ngSubmit)="onSubmit()" class="needs-validation" novalidate="">
+        <form [formGroup]="formClient" (ngSubmit)="onSubmit()" class="needs-validation" novalidate="">
 
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <label for="name">Nome completo</label>
-                    <input type="text" class="form-control" id="name" formControlName="name" placeholder="nome completo" required>
+                    <input type="text" class="form-control" id="name" formControlName="name" placeholder="nome completo"
+                        required>
                     <div *ngIf="f.name.errors  && (f.name.dirty || f.name.touched)" class="invalid-feedback">
                         <div *ngIf="f.name.errors.required">Nome completo é obrigatório.</div>
                         <div *ngIf="f.name.errors.pattern">e preciso de duas palavras para preenchimento do campo.</div>
@@ -16,21 +17,24 @@
 
             <label for="">Conta:</label>
             <div class="row">
-                <div class="col"> 
-                    <input id="fisica" type="radio" value="Fisica" name="type" formControlName="type"> Pessoa Fisica   
-             
-                    <input id="juridica"  type="radio"  value="Juridica" name="type" formControlName="type"> Pessoa Juridica
+                <div class="col">
+                    <input id="fisica" type="radio" value="Fisica" name="type" formControlName="type"> Pessoa Fisica
+
+                    <input id="juridica" type="radio" value="Juridica" name="type" formControlName="type"> Pessoa
+                    Juridica
                 </div>
             </div>
             <hr class="mb-4">
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="cpfcnpj">CPF/CNPJ</label>
-                    <input type="text" class="form-control" id="cpfcnpj" placeholder="CNPJ ou CPF"  mask="000.000.000-00||00.000.000/0000-00"  formControlName="cpfcnpj"   required>
+                    <input type="text" class="form-control" id="cpfcnpj" placeholder="CNPJ ou CPF"
+                        mask="000.000.000-00||00.000.000/0000-00" formControlName="cpfcnpj" required>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="rgie">RG/IE</label>
-                    <input type="text" class="form-control" id="rgie" placeholder="IE ou RG"  mask="00000000||000000000000" formControlName="rgie" required>
+                    <input type="text" class="form-control" id="rgie" placeholder="IE ou RG"
+                        mask="00000000||000000000000" formControlName="rgie" required>
                     <div class="invalid-feedback">
                         Valid first name is required.
                     </div>
@@ -39,7 +43,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <label for="">Adicionar contato</label>
-                    <button type="button" class="btn btn-primary btn-block  mb-3"  (click)="addContact()"> + </button>
+                    <button type="button" class="btn btn-primary btn-block  mb-3" (click)="addContact()"> + </button>
                 </div>
             </div>
             <div class="row justify-content-end" formArrayName="phones">
@@ -48,7 +52,8 @@
                         <div class="col-md-3">
                             <label for="lastName">(DDD)</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" name="areacode" mask="00"  formControlName="areacode">
+                                <input type="text" class="form-control" name="areacode" mask="00"
+                                    formControlName="areacode">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -56,10 +61,11 @@
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
-                                        <input type="radio" id="ismain{{i}}" name="ismain" formControlName="ismain" [value]=true >
+                                        <input type="radio" id="ismain{{i}}" name="ismain" formControlName="ismain"
+                                            [value]=true>
                                     </div>
                                 </div>
-                                <input type="text" class="form-control" name="phone" formControlName="phone" >
+                                <input type="text" class="form-control" name="phone" formControlName="phone">
                             </div>
                         </div>
                     </div>
@@ -69,11 +75,13 @@
 
 
             <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="save-info" [value]=true formControlName="isactive" >
+                <input type="checkbox" class="custom-control-input" id="save-info" [value]=true
+                    formControlName="isactive">
                 <label class="custom-control-label" for="save-info">Está ficará ativa ?</label>
             </div>
 
-            <button class="btn btn-primary btn-lg btn-block mt-4" [disabled]="!formClient.valid" type="submit">Finalizar</button>
+            <button class="btn btn-primary btn-lg btn-block mt-4" [disabled]="!formClient.valid"
+                type="submit">Finalizar</button>
         </form>
     </div>
 </div>
