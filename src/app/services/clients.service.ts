@@ -16,6 +16,12 @@ export class ClientsService {
     return this.http.get<clientsModel[]>(`${environment.apiUrl}/users`);
   }
 
+  getId(request: any) {
+    return this.http.get<clientsModel[]>(`${environment.apiUrl}/users/filter/id`,{
+      params: request
+    });
+  }
+
   getFilterPeriod( request: any ) {
     return this.http.get<clientsModel[]>(`${environment.apiUrl}/users/filter/period`, {
       params: request
@@ -23,7 +29,7 @@ export class ClientsService {
   }
 
   getFilterPhone( request: any ) {
-    return this.http.get<clientsModel[]>(`${environment.apiUrl}/users/filter/phone`, {
+    return this.http.get<any[]>(`${environment.apiUrl}/users/filter/phone`, {
       params: request
     });
   }
@@ -31,5 +37,14 @@ export class ClientsService {
   create( request: any ) {
     return this.http.post<any[]>(`${environment.apiUrl}/users`, request);
   }
+
+  update( request: any ) {
+    return this.http.put<any[]>(`${environment.apiUrl}/users`, request);
+  }
+
+  delete( id: any ) {
+    return this.http.delete<any[]>(`${environment.apiUrl}/users/delete/`+ id);
+  }
+
 }
 

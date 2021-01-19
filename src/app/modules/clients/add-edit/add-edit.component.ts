@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms'
-import { Router } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@angular/forms'
+
 import { ClientsService } from 'src/app/services/clients.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -14,20 +15,19 @@ import { ClientsService } from 'src/app/services/clients.service';
 
 export class AddEditComponent implements OnInit {
 
-  contatcs: any = FormArray;
-
   formClient!: FormGroup;
-
-
+  contatcs: any = FormArray;
 
   constructor(
 
     private formBuilder: FormBuilder,
     private clientsService: ClientsService,
-    private router: Router
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
+
 
     this.formClient = this.formBuilder.group({
       name: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+ [a-zA-Z]+$')]],
@@ -35,16 +35,43 @@ export class AddEditComponent implements OnInit {
       cpfcnpj: ['', Validators.required],
       rgie: ['', Validators.required],
       isactive: ['', Validators.nullValidator],
-      phones: this.formBuilder.array([
-        this.formBuilder.group({
-          ismain: [false, Validators.nullValidator],
-          areacode: ['', Validators.required],
-          phone: ['', Validators.required],
-        }),
-      ]),
+      phones: this.formBuilder.array([]),
     });
 
     this.contatcs = this.formClient.get('phones') as FormArray;
+
+    this.activatedRoute.params.subscribe(params => {
+
+      if (params['id']) {
+
+        this.clientsService.getId({ id: params['id'] }).subscribe(data => {
+          this.formClient = this.formBuilder.group({
+            name: [data[0].name],
+            type: [data[0].type],
+            cpfcnpj: [data[0].cpfcnpj],
+            rgie: [data[0].rgie],
+            isactive: [data[0].isactive],
+            phones: this.formBuilder.array([]),
+          });
+
+          this.contatcs = this.formClient.get('phones') as FormArray;
+        });
+
+        this.clientsService.getFilterPhone({ id: params['id'], limit: 999 }).subscribe(data => {
+          data.forEach(item => {
+            let formGroup: FormGroup = this.formBuilder.group({
+              id: item.id,
+              ismain: [item.ismain, Validators.nullValidator],
+              areacode: [item.areacode, Validators.required],
+              phone: [item.phone, Validators.required],
+            });
+            this.contatcs.push(formGroup)
+          });
+          console.log(this.contatcs.controls);
+        });
+      }
+    });
+
   }
 
   get f() {
@@ -63,12 +90,26 @@ export class AddEditComponent implements OnInit {
   }
 
   onSubmit() {
-    this.clientsService.create(this.formClient.value).pipe(first()).subscribe(data => {
-      alert("cadastrado com sucesso.");
-      this.router.navigate(['/clientes']);
-    }, error => {
-      console.log(error);
+
+    this.activatedRoute.params.subscribe(params => {
+
+      if (params['id']) {
+        this.clientsService.create(this.formClient.value).pipe(first()).subscribe(data => {
+          alert("cadastrado com sucesso.");
+          this.router.navigate(['/clientes']);
+        }, error => {
+          console.log(error);
+        });
+      } else {
+        this.clientsService.create(this.formClient.value).pipe(first()).subscribe(data => {
+          alert("cadastrado com sucesso.");
+          this.router.navigate(['/clientes']);
+        }, error => {
+          console.log(error);
+        });
+      }
     });
+
   }
 
 }
