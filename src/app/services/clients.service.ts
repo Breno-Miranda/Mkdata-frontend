@@ -38,8 +38,8 @@ export class ClientsService {
     return this.http.post<any[]>(`${environment.apiUrl}/users`, request);
   }
 
-  update( request: any ) {
-    return this.http.put<any[]>(`${environment.apiUrl}/users`, request);
+  update( request: any, id: any ) {
+    return this.http.put<any[]>(`${environment.apiUrl}/users/update/`+ id, request);
   }
 
   delete( id: any ) {

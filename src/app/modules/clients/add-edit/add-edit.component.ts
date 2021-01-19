@@ -30,11 +30,11 @@ export class AddEditComponent implements OnInit {
 
 
     this.formClient = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.pattern('^[a-zA-Z]+ [a-zA-Z]+$')]],
+      name: ['', [Validators.required]],
       type: ['', Validators.required],
       cpfcnpj: ['', Validators.required],
       rgie: ['', Validators.required],
-      isactive: ['', Validators.nullValidator],
+      isactive: [false, Validators.nullValidator],
       phones: this.formBuilder.array([]),
     });
 
@@ -94,9 +94,9 @@ export class AddEditComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
 
       if (params['id']) {
-        this.clientsService.create(this.formClient.value).pipe(first()).subscribe(data => {
-          alert("cadastrado com sucesso.");
-          this.router.navigate(['/clientes']);
+        this.clientsService.update(this.formClient.value, params['id']).pipe(first()).subscribe(data => {
+          alert("cadastrado atualizado com sucesso.");
+          // this.router.navigate(['/clientes']);
         }, error => {
           console.log(error);
         });

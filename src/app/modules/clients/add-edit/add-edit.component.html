@@ -6,13 +6,11 @@
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <label for="name">Nome completo</label>
-                    <input type="text" class="form-control" id="name" formControlName="name" placeholder="nome completo"
-                        required>
-                    <div *ngIf="f.name.errors  && (f.name.dirty || f.name.touched)" class="invalid-feedback">
-                        <div *ngIf="f.name.errors.required">Nome completo é obrigatório.</div>
-                        <div *ngIf="f.name.errors.pattern">e preciso de duas palavras para preenchimento do campo.</div>
+                    <input type="text" class="form-control" id="name" formControlName="name" placeholder="nome completo" required>
+                    <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)">
+                        <span class="text-info">* Informação obrigatória. Precisa no minimo ter duas palavras.</span>
                     </div>
-                    <span class="info">* Informação obrigatoria. Precisa no minimo ter duas palavras.</span>
+                    
                 </div>
             </div>
 
@@ -26,7 +24,9 @@
                         <input id="juridica" type="radio" value="Juridica" name="type" formControlName="type"> Pessoa
                         Juridica
                     </div>
-                    <span class="info ml-3">* Informação obrigatoria.</span>
+                    <div *ngIf="f.type.invalid && (f.type.dirty || f.type.touched)">
+                        <span class="text-info ml-3">* Informação obrigatória.</span>
+                    </div>
                 </div>
                 
             </div>
@@ -35,12 +35,16 @@
                 <div class="col-md-6 mb-3">
                     <label for="cpfcnpj">CPF/CNPJ</label>
                     <input type="text" class="form-control" id="cpfcnpj" placeholder="CNPJ ou CPF" mask="000.000.000-00||00.000.000/0000-00" formControlName="cpfcnpj" required>
-                    <span class="info">* Informação obrigatoria. Valida-se pela quantidade de digito.</span>
+                    <div *ngIf="f.cpfcnpj.invalid && (f.cpfcnpj.dirty || f.cpfcnpj.touched)">
+                        <span class="text-info">* Informação obrigatória. Valida-se pela quantidade de digito.</span>
+                    </div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="rgie">RG/IE</label>
                     <input type="text" class="form-control" id="rgie" placeholder="IE ou RG" mask="00000000||000000000000" formControlName="rgie" required>
-                    <span class="info">* Informação obrigatoria. Prencha de 8 a 14 números.</span>
+                    <div *ngIf="f.rgie.invalid && (f.rgie.dirty || f.rgie.touched)">
+                        <span class="text-info">* Informação obrigatória. Prencha de 8 a 14 números.</span>
+                    </div>
                 </div>
             </div>
 
@@ -84,7 +88,7 @@
                     formControlName="isactive">
                 <label class="custom-control-label" for="save-info">Ativar conta ?</label>
             </div>
-            <button class="btn btn-primary btn-lg btn-block mt-4" [disabled]="!formClient.valid"
+            <button class="btn btn-secondary btn-lg btn-block mt-4" [disabled]="!formClient.valid"
                 type="submit">Salvar</button>
         </form>
     </div>
