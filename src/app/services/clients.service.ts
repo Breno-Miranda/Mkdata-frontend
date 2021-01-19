@@ -22,6 +22,13 @@ export class ClientsService {
     });
   }
 
+  getName(request: any) {
+    return this.http.get<clientsModel[]>(`${environment.apiUrl}/users/filter/name`,{
+      params: request
+    });
+  }
+
+
   getFilterPeriod( request: any ) {
     return this.http.get<clientsModel[]>(`${environment.apiUrl}/users/filter/period`, {
       params: request

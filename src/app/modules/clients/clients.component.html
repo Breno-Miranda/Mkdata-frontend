@@ -1,15 +1,26 @@
 <div class="row mt-4">
     <div class="col">
         <h4>Meus clientes</h4>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Similique pariatur, vitae officia dignissimos
-            distinctio sequi omnis, dolorum, expedita at officiis suscipit harum. Pariatur suscipit maxime doloremque
-            possimus beatae ratione odio!</p>
-        <a href="#" class="btn btn-secondary btn-lg active float-right" role="button" aria-pressed="true"
-            [routerLink]="['/clientes/adicionar']">Adicionar novo</a>
+        <p>Abaixo se encontra a listagens de todos seus clientes e contatos. Para <strong>Adicionar um novo</strong>
+            clique no link abaixo:</p>
+        <h6>adicione novos clientes <a href="#" class="" role="button" aria-pressed="true"
+                [routerLink]="['/clientes/adicionar']">novo cliente</a></h6>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="form-inline float-right">
+            <div class="form-group mx-sm-3 mb-2"> <input class="form-control" placeholder="pesquisar por nome" type="text" [(ngModel)]="model.find" name="find">
+            </div>
+            <button type="submit" class="btn btn-secondary" (click)="onHadlerFilterName()">Filtrar <i class="fa fa-filter"></i></button>
+        </div>
+    </div>
+
+</div>
 <div class="row mr-auto mt-4">
-    <div class="col">
-        <app-clients-table [data]="clients" [clientsPhones]="clientsPhones" [client]="client" (onHandlerFilterPhonesEvent)="onHandlerFilterPhones($event)" (onHadlerDeleteEvent)="onHadlerDelete($event)"></app-clients-table>
+    <div class="col-md-12">
+        <app-clients-table [data]="clients" [clientsPhones]="clientsPhones" [client]="client"
+            (onHandlerFilterPhonesEvent)="onHandlerFilterPhones($event)" (onHadlerDeleteEvent)="onHadlerDelete($event)">
+        </app-clients-table>
     </div>
 </div>

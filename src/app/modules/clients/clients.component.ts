@@ -9,6 +9,7 @@ import Swal from 'sweetalert2'
 })
 export class ClientsComponent implements OnInit {
   
+  model: any = {};
   client: any;
   clients: any;
   clientsPhones: any;
@@ -23,6 +24,12 @@ export class ClientsComponent implements OnInit {
 
   async onHadlerLoad(){
     await this.clientsService.getAll().subscribe( data => {
+      this.clients = data
+    });
+  }
+
+  async onHadlerFilterName(){
+    await this.clientsService.getName({name:this.model.find, limit:10}).subscribe( data => {
       this.clients = data
     });
   }
