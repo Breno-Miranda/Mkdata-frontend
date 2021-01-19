@@ -95,10 +95,7 @@ export class AddEditComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
 
       if (params['id']) {
-        this.clientsService.update(this.formClient.value, params['id']).pipe(first()).subscribe((data: any)  => {
-         
-          console.log(data);
-          
+        this.clientsService.update(this.formClient.value, params['id']).pipe(first()).subscribe((data: any) => {
           Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -114,19 +111,19 @@ export class AddEditComponent implements OnInit {
         });
       } else {
         this.clientsService.create(this.formClient.value).pipe(first()).subscribe((data: any) => {
-
-          console.log(data);
-          
           Swal.fire({
             position: 'top-end',
-            icon: 'success',
-            title:  data.message,
+            icon: data.error ?  'error' : 'success',
+            title: data.message,
             showConfirmButton: false,
             timer: 1500
-          })
-          setTimeout(() => {
-            this.router.navigate(['/clientes']);
-          }, 3000);
+          });
+
+          if(!data.error){
+            setTimeout(() => {
+              this.router.navigate(['/clientes']);
+            }, 1500);
+          }
         }, error => {
           console.log(error);
         });
