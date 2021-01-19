@@ -18,7 +18,7 @@
             <td>
                 <a class="ml-3 mr-0" data-toggle="modal" data-target="#blockclient" (click)="_onHandlerFilterPhones(item)"><i class="fa fa-eye" aria-hidden="true"></i></a>
                 <a href="#" class="ml-3 mr-0" [routerLink]="['/clientes/editar/', item.id]" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                <a href="#" class="ml-3 mr-0" [routerLink]="['/clientes/delete/' , item.id]" title="Delete" data-toggle="tooltip"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <a class="ml-3 mr-0" title="Delete" data-toggle="tooltip" (click)="_onHadlerDelete(item)"><i class="fa fa-trash" aria-hidden="true"></i></a>
             </td>
         </tr>
     </tbody>

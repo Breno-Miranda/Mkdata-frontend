@@ -15,16 +15,17 @@ export class ClientsTableComponent implements OnInit {
 
 
   @Output() onHandlerFilterPhonesEvent = new EventEmitter<string>();
+  @Output() onHadlerDeleteEvent = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit(): void {}
 
   _onHandlerFilterPhones(value: any) {
-    console.log(this.client);
-    
     this.onHandlerFilterPhonesEvent.emit(value);
   }
 
-
+  _onHadlerDelete(value: any){
+    this.onHadlerDeleteEvent.emit(value);
+  }
 }

@@ -15,7 +15,8 @@ import { JwtInterceptor } from './core/authentication/jwt.interceptor';
 import { ErrorInterceptor } from './core/http/error.interceptor';
 
 import { NgxMaskModule, IConfig } from 'ngx-mask'
- 
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 const maskConfig: Partial<IConfig> = {
   validation: false,
 };
@@ -34,6 +35,7 @@ const maskConfig: Partial<IConfig> = {
     RouterModule,
     SharedModule,
     NgxMaskModule.forRoot(maskConfig),
+    SweetAlert2Module.forRoot()
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
