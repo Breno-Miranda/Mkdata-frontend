@@ -5,6 +5,7 @@ import { FormGroup, FormControl, FormBuilder, Validators, FormArray } from '@ang
 import { ClientsService } from 'src/app/services/clients.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-add-edit',
@@ -94,16 +95,38 @@ export class AddEditComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
 
       if (params['id']) {
-        this.clientsService.update(this.formClient.value, params['id']).pipe(first()).subscribe(data => {
-          alert("cadastrado atualizado com sucesso.");
-          // this.router.navigate(['/clientes']);
+        this.clientsService.update(this.formClient.value, params['id']).pipe(first()).subscribe((data: any)  => {
+         
+          console.log(data);
+          
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
+          setTimeout(() => {
+            this.router.navigate(['/clientes']);
+          }, 1500);
         }, error => {
           console.log(error);
         });
       } else {
-        this.clientsService.create(this.formClient.value).pipe(first()).subscribe(data => {
-          alert("cadastrado com sucesso.");
-          this.router.navigate(['/clientes']);
+        this.clientsService.create(this.formClient.value).pipe(first()).subscribe((data: any) => {
+
+          console.log(data);
+          
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title:  data.message,
+            showConfirmButton: false,
+            timer: 1500
+          })
+          setTimeout(() => {
+            this.router.navigate(['/clientes']);
+          }, 3000);
         }, error => {
           console.log(error);
         });
