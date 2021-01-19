@@ -22,6 +22,12 @@ export class ClientsService {
     });
   }
 
+  getFilterPhone( request: any ) {
+    return this.http.get<clientsModel[]>(`${environment.apiUrl}/users/filter/phone`, {
+      params: request
+    });
+  }
+
   create( request: any ) {
     return this.http.post<any[]>(`${environment.apiUrl}/users`, request);
   }

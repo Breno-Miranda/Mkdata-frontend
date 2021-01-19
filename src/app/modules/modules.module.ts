@@ -11,7 +11,8 @@ import { ClientsModule } from './clients/clients.module';
 
 
 import { NgxMaskModule, IConfig } from 'ngx-mask'
- 
+import { MomentModule } from 'ngx-moment';
+
 const maskConfig: Partial<IConfig> = {
   validation: true,
 };
@@ -28,6 +29,7 @@ const maskConfig: Partial<IConfig> = {
     RouterModule,
     ClientsModule,
     NgxMaskModule.forRoot(maskConfig),
+    MomentModule
   ]
 })
 export class ModulesModule { }
