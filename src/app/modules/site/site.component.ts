@@ -35,7 +35,6 @@ export class SiteComponent implements OnInit {
   }
 
   async onHandlerFilterPhones(item: any){
-
     // add object
       this.client = item;
       // filter phones

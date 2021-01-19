@@ -8,9 +8,7 @@
                 data-holder-rendered="true">
             <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
                 <strong class="d-block text-gray-dark">{{item.name}}</strong>
-                {{ (item.cpfcnpj.length == 11 ? 'CPF' : 'CNPJ')}} - {{ item.cpfcnpj | mask:
-                '000.000.000-00||00.000.000/0000-00' }} | {{ (item.rgie.length == 8 ? 'RG' : 'EI')}} - {{ item.rgie |
-                mask: '00000000||000000000000' }} | Pessoa {{ item.type }}
+                {{ (item.cpfcnpj.length == 11 ? 'CPF' : 'CNPJ')}} - {{ item.cpfcnpj.length == 11 ? (item.cpfcnpj | mask: '000.000.000-00') : (item.cpfcnpj | mask: '00.000.000/0000-00') }} | {{ (item.rgie.length == 8 ? 'RG' : 'EI')}} - {{  item.rgie.length == 8 ? (item.rgie | mask: '00000000') : (item.rgie | mask: '000000000000') }} | Pessoa {{ item.type }}
             </p>
         </div>
 
@@ -32,8 +30,7 @@
                     <strong class="text-gray-dark">{{item.name}}</strong>
                     <a class="btn btn-primary" data-toggle="modal" data-target="#blockclient" (click)="onHandlerFilterPhones(item)">Detalhes</a>
                 </div>
-                <span class="d-block">{{ (item.cpfcnpj.length == 11 ? 'CPF' : 'CNPJ')}} - {{ item.cpfcnpj | mask:
-                    '000.000.000-00||00.000.000/0000-00' }} | Data de cadastro: {{item.createdAt | amDateFormat: 'DD/MM/YYYY' }}</span>
+                <span class="d-block">{{ (item.cpfcnpj.length == 11 ? 'CPF' : 'CNPJ')}} - {{ item.cpfcnpj.length == 11 ? (item.cpfcnpj | mask: '000.000.000-00') : (item.cpfcnpj | mask: '00.000.000/0000-00')}} | Data de cadastro: {{item.createdAt | amDateFormat: 'DD/MM/YYYY' }}</span>
             </div>
         </div>
 
@@ -55,12 +52,12 @@
             </div>
             <div class="modal-body">
                 <p>Nome: <strong>{{client.name}}</strong></p> 
-                <p>{{ (client.cpfcnpj.length == 11 ? 'CPF' : 'CNPJ')}}: <strong>{{ client.cpfcnpj | mask: '000.000.000-00||00.000.000/0000-00' }}</strong></p>
-                <p> {{ (client.rgie.length == 8 ? 'RG' : 'EI')}}: <strong>{{ client.rgie | mask: '00000000||000000000000' }}</strong></p>
+                <p>{{ (client.cpfcnpj.length == 11 ? 'CPF' : 'CNPJ')}}: <strong>{{ client.cpfcnpj.length == 11 ? (client.cpfcnpj | mask: '000.000.000-00') : (client.cpfcnpj | mask: '00.000.000/0000-00') }}</strong></p>
+                <p> {{ (client.rgie.length == 8 ? 'RG' : 'EI')}}: <strong>{{  client.rgie.length == 8 ? (client.rgie | mask: '00000000') : (client.rgie | mask: '000000000000') }}</strong></p>
                 <p>Data de cadastro: <strong>{{client.createdAt | amDateFormat: 'DD/MM/YYYY' }}</strong></p>
                 <hr>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" *ngFor="let item of clientsPhones; let i = index">{{i+1}}° Telefone: {{item.areacode | mask: '(00)'}} {{item.phone  | mask: '0 0000-0000'}}</li>
+                    <li class="list-group-item" *ngFor="let item of clientsPhones; let i = index">{{i+1}}° Telefone: {{item.areacode | mask: '(00)'}} {{item.phone  | mask: '0 0000-0000'}} <span *ngIf="item.ismain"><strong>(Principal)</strong></span></li>
                 </ul>
             </div>
             <div class="modal-footer">
