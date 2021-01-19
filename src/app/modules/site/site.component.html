@@ -33,7 +33,7 @@
                     <a class="btn btn-primary" data-toggle="modal" data-target="#blockclient" (click)="onHandlerFilterPhones(item)">Detalhes</a>
                 </div>
                 <span class="d-block">{{ (item.cpfcnpj.length == 11 ? 'CPF' : 'CNPJ')}} - {{ item.cpfcnpj | mask:
-                    '000.000.000-00||00.000.000/0000-00' }} | data de cadastro: {{item.createdAt | amDateFormat: 'DD/MM/YYYY' }}</span>
+                    '000.000.000-00||00.000.000/0000-00' }} | Data de cadastro: {{item.createdAt | amDateFormat: 'DD/MM/YYYY' }}</span>
             </div>
         </div>
 
@@ -44,23 +44,27 @@
 </main>
 
 <!-- Modal -->
-<div class="modal fade" id="blockclient" tabindex="-1" role="dialog" aria-labelledby="modeallabel" aria-hidden="true">
+<div class="modal fade" id="blockclient" tabindex="-1" role="dialog" aria-labelledby="modeallabel" aria-hidden="true" *ngIf="client">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modeallabel">Detalhes de clientes</h5>
+                <h5 class="modal-title" id="modeallabel">Detalhes do cliente ({{client.name}})</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
+                <p>Nome: <strong>{{client.name}}</strong></p> 
+                <p>{{ (client.cpfcnpj.length == 11 ? 'CPF' : 'CNPJ')}}: <strong>{{ client.cpfcnpj | mask: '000.000.000-00||00.000.000/0000-00' }}</strong></p>
+                <p> {{ (client.rgie.length == 8 ? 'RG' : 'EI')}}: <strong>{{ client.rgie | mask: '00000000||000000000000' }}</strong></p>
+                <p>Data de cadastro: <strong>{{client.createdAt | amDateFormat: 'DD/MM/YYYY' }}</strong></p>
+                <hr>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item" *ngFor="let item of clientsPhones; let i = index">{{item.areacode | mask: '(00)'}} {{item.phone  | mask: '0 0000-0000'}}</li>
+                    <li class="list-group-item" *ngFor="let item of clientsPhones; let i = index">{{i+1}}° Telefone: {{item.areacode | mask: '(00)'}} {{item.phone  | mask: '0 0000-0000'}}</li>
                 </ul>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
             </div>
         </div>
     </div>

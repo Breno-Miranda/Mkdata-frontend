@@ -16,6 +16,7 @@ export class SiteComponent implements OnInit {
   clientsRecents: any;
   clientsOld: any;
   clientsPhones: any;
+  client: any;
 
   constructor(
     private clientsService: ClientsService
@@ -34,6 +35,9 @@ export class SiteComponent implements OnInit {
   }
 
   async onHandlerFilterPhones(item: any){
+
+    // add object
+      this.client = item;
       // filter phones
       await this.clientsService.getFilterPhone({id:item.id,  limit: 999}).subscribe( data => {
         this.clientsPhones = data
