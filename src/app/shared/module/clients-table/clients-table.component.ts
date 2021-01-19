@@ -21,6 +21,8 @@ export class ClientsTableComponent implements OnInit {
   ngOnInit(): void {}
 
   _onHandlerFilterPhones(value: any) {
+    console.log(this.client);
+    
     this.onHandlerFilterPhonesEvent.emit(value);
   }
 

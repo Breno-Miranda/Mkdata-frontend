@@ -16,7 +16,7 @@
             <td>{{ item.cpfcnpj.length == 11 ? (item.cpfcnpj | mask: '000.000.000-00') : (item.cpfcnpj | mask: '00.000.000/0000-00') }}</td>
             <td>{{ item.rgie.length == 8 ? (item.rgie | mask: '00000000') : (item.rgie | mask: '000000000000')}}</td>
             <td>
-                <a href="#" class="ml-3 mr-0" data-toggle="modal" data-target="#blockclient" (click)="_onHandlerFilterPhones(item)"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                <a class="ml-3 mr-0" data-toggle="modal" data-target="#blockclient" (click)="_onHandlerFilterPhones(item)"><i class="fa fa-eye" aria-hidden="true"></i></a>
                 <a href="#" class="ml-3 mr-0" [routerLink]="['/clientes/editar/', item.id]" title="Edit" data-toggle="tooltip"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                 <a href="#" class="ml-3 mr-0" [routerLink]="['/clientes/delete/' , item.id]" title="Delete" data-toggle="tooltip"><i class="fa fa-trash" aria-hidden="true"></i></a>
             </td>
@@ -27,7 +27,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="blockclient" tabindex="-1" role="dialog" aria-labelledby="modeallabel" aria-hidden="true" *ngIf="client">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modeallabel">Detalhes do cliente ({{client.name}})</h5>
