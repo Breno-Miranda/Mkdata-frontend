@@ -1,27 +1,38 @@
-# MkdataFrontend
+# MKdata (angular 11)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.5.
+![MKdata](https://media-exp1.licdn.com/dms/image/C4E0BAQF3sc70KSjyOA/company-logo_200_200/0/1564798132488?e=1619049600&v=beta&t=hBt6NfjtdEB377c8eAMbuif06l0noXgi9iQ3Tdx4jeM)
 
-## Development server
+Projeto simples feito com todo amor e carinho.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- Tecnologias utilizadas:
 
-## Code scaffolding
+  - angular 11
+  - Bootstrap 4
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+### Installation
 
-## Running unit tests
+MKdata requer [Angular  CLI](https://angulario.org/) to run.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Só precisa de dois passo:
 
-## Running end-to-end tests
+```sh
+$ git clone **este repositorio** 
+$ npm install -d
+```
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Para rodar o projeto ...
 
-## Further help
+```sh
+$ npm run start
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Plugins
+
+Os Plugins utilizados foram:
+
+| Plugin |
+| ------ | 
+| angular | 
+| Bootstrap|
