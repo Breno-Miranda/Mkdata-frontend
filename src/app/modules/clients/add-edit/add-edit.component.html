@@ -71,11 +71,12 @@
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
-                                        <input type="radio" id="ismain{{i}}" name="ismain" formControlName="ismain" [value]=true>
+                                        <input type="radio" id="ismain{{i}}" name="ismain" formControlName="ismain" [value]=true> 
                                     </div>
                                 </div>
                                 <input type="text" class="form-control" name="phone" mask="0 0000-0000" formControlName="phone">
                             </div>
+                            <button class="btn btn-secondary" *ngIf="isEdit && phones.controls.id.value !== 0">Excluir</button>
                         </div>
                     </div>
                 </div>

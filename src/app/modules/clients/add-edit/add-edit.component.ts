@@ -16,6 +16,7 @@ import Swal from 'sweetalert2'
 
 export class AddEditComponent implements OnInit {
 
+  isEdit!: any;
   formClient!: FormGroup;
   contatcs: any = FormArray;
 
@@ -44,6 +45,8 @@ export class AddEditComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
 
       if (params['id']) {
+
+        this.isEdit = true;
 
         this.clientsService.getId({ id: params['id'] }).subscribe(data => {
           this.formClient = this.formBuilder.group({
@@ -82,6 +85,7 @@ export class AddEditComponent implements OnInit {
   addContact() {
 
     let formGroup: FormGroup = this.formBuilder.group({
+      id: 0,
       ismain: [false, Validators.nullValidator],
       areacode: ['', Validators.required],
       phone: ['', Validators.required],
