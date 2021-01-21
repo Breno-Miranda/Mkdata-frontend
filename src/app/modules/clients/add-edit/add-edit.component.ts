@@ -94,6 +94,28 @@ export class AddEditComponent implements OnInit {
     this.contatcs.push(formGroup);
   }
 
+  onDelete( id: any){
+      if(id)
+      this.clientsService.deletePhone(id).pipe(first()).subscribe((data: any) => {
+        Swal.fire({
+          position: 'top-end',
+          icon: data.error ?  'error' : 'success',
+          title: data.message,
+          showConfirmButton: false,
+          timer: 1500
+        });
+
+        if(!data.error){
+          setTimeout(() => {
+            this.router.navigate(['/clientes']);
+          }, 1500);
+        }
+      }, error => {
+        console.log(error);
+      });
+  }
+
+
   onSubmit() {
 
     this.activatedRoute.params.subscribe(params => {

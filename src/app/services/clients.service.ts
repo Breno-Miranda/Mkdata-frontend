@@ -53,5 +53,9 @@ export class ClientsService {
     return this.http.delete<any[]>(`${environment.apiUrl}/users/delete/`+ id);
   }
 
+  deletePhone( id: any ) {
+    return this.http.delete<any[]>(`${environment.apiUrl}/users/phone/delete/`+ id);
+  }
+
 }
 
